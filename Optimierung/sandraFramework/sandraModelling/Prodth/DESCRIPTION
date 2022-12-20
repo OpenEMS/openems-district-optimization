@@ -1,0 +1,12 @@
+Package: Prodth
+Type: Package
+Title: Producer_thermal
+Version: 0.1.0
+Author: OTH Regensburg (Dr. Philipp Graf, Antonella Giannitelli, Johannes Walbrunn)
+Maintainer: Prof. Dr. Oliver Steffens <oliver.steffens@oth-regensburg.de>
+Description: This package represents a thermal producer like a solar thermal plant
+License: The MIT License (MIT)
+Depends: Root (>= 0.1.0)
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1

@@ -1,0 +1,56 @@
+######################
+#Python / jupyter
+######################
+*.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+*.manifest
+*.spec
+pip-log.txt
+pip-delete-this-directory.txt
+input/*
+###################################
+# General
+####################
+
+Untitled*.ipynb
+[Dd]ev.R
+[Dd]ev_*.py
+[Dd]ev_*.ipynb
+
+####################
+# IDEs
+####################
+.vscode
+**/.idea
+
+####################
+# Project specific
+####################
+
+/output
+/notebooks
+/data

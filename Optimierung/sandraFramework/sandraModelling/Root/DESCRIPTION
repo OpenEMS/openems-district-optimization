@@ -1,0 +1,13 @@
+Package: Root
+Type: Package
+Title: The basis of the linear optimization
+Version: 0.1.0
+Author: OTH Regensburg (Dr. Philipp Graf, Antonella Giannitelli, Johannes Walbrunn)
+Maintainer: Prof. Dr. Oliver Steffens <oliver.steffens@oth-regensburg.de>
+Description: In root all generic methodes for creating the matrizes and vectors.
+License: The MIT License (MIT)
+Encoding: UTF-8
+LazyData: true
+Depends: LM, Matrix, stringr
+RoxygenNote: 6.1.1
+Suggests: testthat

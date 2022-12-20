@@ -1,0 +1,12 @@
+Package: Demth
+Type: Package
+Title: Demand of thermal energy
+Version: 0.1.0
+Author: OTH Regensburg (Dr. Philipp Graf, Antonella Giannitelli, Johannes Walbrunn)
+Maintainer: Prof. Dr. Oliver Steffens <oliver.steffens@oth-regensburg.de>
+Description: This pacakge represents a demand of thermal energy.
+License: The MIT License (MIT)
+Depends: Root (>= 0.1.0)
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1

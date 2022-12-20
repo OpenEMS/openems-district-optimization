@@ -1,0 +1,16 @@
+Package: Wado
+Type: Package
+Title: Watch Dog
+Version: 0.1.0
+Author: OTH Regensburg (Dr. Philipp Graf, Antonella Giannitelli, Johannes Walbrunn)
+Maintainer: Prof. Dr. Oliver Steffens <oliver.steffens@oth-regensburg.de>
+Description: A package to be able to switch power flows on and off by a 
+    certain value of an other package. For example there should be only an
+    output of a thermal storage system when it reached a certain energy
+    level, the watch dog looks at the energy in the thermal storage system
+    and switches the output on if it reaches the adjusted value.
+License: The MIT License (MIT)
+Encoding: UTF-8
+LazyData: true
+Depends: Root (>= 0.1.0)
+RoxygenNote: 6.1.1

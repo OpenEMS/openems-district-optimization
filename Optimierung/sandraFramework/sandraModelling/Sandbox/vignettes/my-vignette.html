@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="Vignette Author" />
+
+<meta name="date" content="2019-05-08" />
+
+<title>Vignette Title</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<link href="data:text/css;charset=utf-8,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23header%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%20code%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Vignette Title</h1>
+<h4 class="author"><em>Vignette Author</em></h4>
+<h4 class="date"><em>2019-05-08</em></h4>
+
+
+
+<p>Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The <code>html_vignette</code> output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The <code>html_vignette</code> format:</p>
+<ul>
+<li>Never uses retina figures</li>
+<li>Has a smaller default figure size</li>
+<li>Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style</li>
+</ul>
+<div id="vignette-info" class="section level2">
+<h2>Vignette Info</h2>
+<p>Note the various macros within the <code>vignette</code> section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the <code>title</code> field and the <code>\VignetteIndexEntry</code> to match the title of your vignette.</p>
+</div>
+<div id="styles" class="section level2">
+<h2>Styles</h2>
+<p>The <code>html_vignette</code> template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:</p>
+<pre><code>output: 
+  rmarkdown::html_vignette:
+    css: mystyles.css</code></pre>
+</div>
+<div id="figures" class="section level2">
+<h2>Figures</h2>
+<p>The figure sizes have been customised so that you can easily put two images side-by-side.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>)
+<span class="kw">plot</span>(<span class="dv">10</span><span class="op">:</span><span class="dv">1</span>)</code></pre></div>
+<p><img src="data:image/png;base64,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" /><img src="data:image/png;base64,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" /></p>
+<p>You can enable figure captions by <code>fig_caption: yes</code> in YAML:</p>
+<pre><code>output:
+  rmarkdown::html_vignette:
+    fig_caption: yes</code></pre>
+<p>Then you can use the chunk option <code>fig.cap = &quot;Your figure caption.&quot;</code> in <strong>knitr</strong>.</p>
+</div>
+<div id="more-examples" class="section level2">
+<h2>More Examples</h2>
+<p>You can write math expressions, e.g. <span class="math inline">\(Y = X\beta + \epsilon\)</span>, footnotes<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>, and tables, e.g. using <code>knitr::kable()</code>.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">mpg</th>
+<th align="right">cyl</th>
+<th align="right">disp</th>
+<th align="right">hp</th>
+<th align="right">drat</th>
+<th align="right">wt</th>
+<th align="right">qsec</th>
+<th align="right">vs</th>
+<th align="right">am</th>
+<th align="right">gear</th>
+<th align="right">carb</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mazda RX4</td>
+<td align="right">21.0</td>
+<td align="right">6</td>
+<td align="right">160.0</td>
+<td align="right">110</td>
+<td align="right">3.90</td>
+<td align="right">2.620</td>
+<td align="right">16.46</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td>Mazda RX4 Wag</td>
+<td align="right">21.0</td>
+<td align="right">6</td>
+<td align="right">160.0</td>
+<td align="right">110</td>
+<td align="right">3.90</td>
+<td align="right">2.875</td>
+<td align="right">17.02</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td>Datsun 710</td>
+<td align="right">22.8</td>
+<td align="right">4</td>
+<td align="right">108.0</td>
+<td align="right">93</td>
+<td align="right">3.85</td>
+<td align="right">2.320</td>
+<td align="right">18.61</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td>Hornet 4 Drive</td>
+<td align="right">21.4</td>
+<td align="right">6</td>
+<td align="right">258.0</td>
+<td align="right">110</td>
+<td align="right">3.08</td>
+<td align="right">3.215</td>
+<td align="right">19.44</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td>Hornet Sportabout</td>
+<td align="right">18.7</td>
+<td align="right">8</td>
+<td align="right">360.0</td>
+<td align="right">175</td>
+<td align="right">3.15</td>
+<td align="right">3.440</td>
+<td align="right">17.02</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td>Valiant</td>
+<td align="right">18.1</td>
+<td align="right">6</td>
+<td align="right">225.0</td>
+<td align="right">105</td>
+<td align="right">2.76</td>
+<td align="right">3.460</td>
+<td align="right">20.22</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td>Duster 360</td>
+<td align="right">14.3</td>
+<td align="right">8</td>
+<td align="right">360.0</td>
+<td align="right">245</td>
+<td align="right">3.21</td>
+<td align="right">3.570</td>
+<td align="right">15.84</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td>Merc 240D</td>
+<td align="right">24.4</td>
+<td align="right">4</td>
+<td align="right">146.7</td>
+<td align="right">62</td>
+<td align="right">3.69</td>
+<td align="right">3.190</td>
+<td align="right">20.00</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">4</td>
+<td align="right">2</td>
+</tr>
+<tr class="odd">
+<td>Merc 230</td>
+<td align="right">22.8</td>
+<td align="right">4</td>
+<td align="right">140.8</td>
+<td align="right">95</td>
+<td align="right">3.92</td>
+<td align="right">3.150</td>
+<td align="right">22.90</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">4</td>
+<td align="right">2</td>
+</tr>
+<tr class="even">
+<td>Merc 280</td>
+<td align="right">19.2</td>
+<td align="right">6</td>
+<td align="right">167.6</td>
+<td align="right">123</td>
+<td align="right">3.92</td>
+<td align="right">3.440</td>
+<td align="right">18.30</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">4</td>
+<td align="right">4</td>
+</tr>
+</tbody>
+</table>
+<p>Also a quote using <code>&gt;</code>:</p>
+<blockquote>
+<p>“He who gives up [code] safety for [code] speed deserves neither.” (<a href="https://twitter.com/hadleywickham/status/504368538874703872">via</a>)</p>
+</blockquote>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>A footnote here.<a href="#fnref1">↩</a></p></li>
+</ol>
+</div>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

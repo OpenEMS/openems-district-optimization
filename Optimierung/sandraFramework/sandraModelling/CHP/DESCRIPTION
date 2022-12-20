@@ -1,0 +1,13 @@
+Package: CHP
+Type: Package
+Title: Combined Heat and Power Plant (CHP)
+Version: 0.1.0
+Author: OTH Regensburg (Dr. Philipp Graf, Antonella Giannitelli, Johannes Walbrunn)
+Maintainer: Prof. Dr. Oliver Steffens <oliver.steffens@oth-regensburg.de>
+Description: This package represents a Combined Heat and Power Plant (CHP).
+    It produces electrical power and heat out of fuel.
+License: The MIT License (MIT)
+Depends: Root (>= 0.1.0)
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
